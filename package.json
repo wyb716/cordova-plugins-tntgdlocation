@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-tntgdlocation",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Cordova GaodeLocation Plugin",
   "cordova": {
     "id": "cordova-plugins-tntgdlocation",

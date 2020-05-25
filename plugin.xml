@@ -3,10 +3,6 @@
         xmlns="http://apache.org/cordova/ns/plugins/1.0" 
         xmlns:android="http://schemas.android.com/apk/res/android">
     <name>GaodeLocation</name>
-    <description>Cordova Gaodelocation Plugin</description>
-    <license>Apache 2.0</license>
-    <keywords>cordova,gaodelocation,cordova-ios,cordova-android</keywords>
-    <repo>https://github.com/wyb716/cordova-plugins-tntgdlocation.git</repo>
     <js-module name="GaodeLocation" src="www/GaodeLocation.js">
         <clobbers target="GaodeLocation" />
     </js-module>

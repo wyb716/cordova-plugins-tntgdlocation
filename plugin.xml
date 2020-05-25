@@ -1,15 +1,15 @@
 <?xml version='1.1' encoding='utf-8'?>
-<plugin id="cordova-plugins-tntgdlocation" version="1.1.1" 
+<plugin id="cordova-plugin-tntgdlocation" version="1.1.1" 
         xmlns="http://apache.org/cordova/ns/plugins/1.0" 
         xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>GaodeLocation</name>
-    <js-module name="GaodeLocation" src="www/GaodeLocation.js">
-        <clobbers target="GaodeLocation" />
+    <name>tntgdlocation</name>
+    <js-module name="tntgdlocation" src="www/GaodeLocation.js">
+        <clobbers target="tntgdlocation" />
     </js-module>
     <preference name="API_KEY" />
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="GaodeLocation">
+            <feature name="tntgdlocation">
                 <param name="android-package" value="com.hbtnt.cordova.plugins.GaodeLocation.GaodeLocation" />
             </feature>
         </config-file>
@@ -52,8 +52,8 @@
     </platform>
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
-            <feature name="GaodeLocation">
-                <param name="ios-package" value="GaodeLocation" />
+            <feature name="tntgdlocation">
+                <param name="ios-package" value="tntgdlocation" />
             </feature>
         </config-file>
         <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">

@@ -1,0 +1,73 @@
+<?xml version='1.1' encoding='utf-8'?>
+<plugin id="cordova-plugins-tntgdlocation" version="1.1.0" 
+        xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>GaodeLocation</name>
+    <js-module name="GaodeLocation" src="www/GaodeLocation.js">
+        <clobbers target="GaodeLocation" />
+    </js-module>
+    <preference name="API_KEY" />
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="GaodeLocation">
+                <param name="android-package" value="com.hbtnt.cordova.plugins.GaodeLocation.GaodeLocation" />
+            </feature>
+        </config-file>
+
+        <!--以下配置完全按照高德的指南进行配置，详见：http://lbs.amap.com/api/android-location-sdk/gettingstarted/-->
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <!--在AndroidManifest.xml的application标签中配置Key：-->
+            <meta-data android:name="com.amap.api.v2.apikey" android:value="$API_KEY">
+            </meta-data>
+            <!--在application标签中声明service组件：-->
+            <service android:name="com.amap.api.location.APSService"></service>
+        </config-file>
+        
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <!--用于进行网络定位-->
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+            <!--用于访问GPS定位-->
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+            <!--获取运营商信息，用于支持提供运营商信息相关的接口-->
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+            <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+            <!--这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+            <!--用于访问网络，网络定位需要上网-->
+            <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+            <!--用于读取手机当前的状态-->
+            <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+            <!--写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据-->
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+            <!--用于申请调用A-GPS模块-->
+            <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+            <!--用于申请获取蓝牙信息进行室内定位-->
+            <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
+        </config-file>
+        <source-file src="src/android/GaodeLocation.java" target-dir="src/com/hbtnt/cordova/plugins/GaodeLocation" />
+        <source-file src="src/android/PendingRequests.java" target-dir="src/com/hbtnt/cordova/plugins/GaodeLocation" />
+        <source-file src="libs/android/AMap_Location_V3.6.1_20171012.jar" target-dir="libs"/>
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="GaodeLocation">
+                <param name="ios-package" value="GaodeLocation" />
+            </feature>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
+            <string>地图定位需要定位权限才可以使用</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
+            <string>地图定位需要定位权限才可以使用，如果您需要使用后台定位功能请选择“始终允许”。</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
+            <string>地图定位需要定位权限才可以使用</string>
+        </config-file>
+        
+        <source-file src="src/ios/GaodeLocation.m" />
+        <framework src="libs/ios/AMapFoundationKit.framework" custom="true"/>
+        <framework src="libs/ios/AMapLocationKit.framework" custom="true"/>
+    </platform>
+</plugin>

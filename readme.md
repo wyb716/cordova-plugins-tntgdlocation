@@ -2,6 +2,6 @@
 
 ## 安装
 
-cordova plugin add cordova-plugins-tntgdlocation --variable API_KEY=
+cordova plugin add cordova-plugin-tntgdlocation --variable API_KEY=
 
 
